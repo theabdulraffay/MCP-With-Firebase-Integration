@@ -2,10 +2,14 @@ import firebase_admin
 from pathlib import Path
 from firebase_admin import credentials, firestore
 from mcp.server.fastmcp import FastMCP
+from dotenv import load_dotenv
 import  os
-BASE_DIR = Path(__file__).resolve().parent
-service_account_path = "./service.json"
-cred = credentials.Certificate(service_account_path)
+import json
+load_dotenv()
+# BASE_DIR = Path(__file__).resolve().parent
+# service_account_path = "./service.json"
+key = json.loads(os.environ.get("KEY"))
+cred = credentials.Certificate(key)
 app = firebase_admin.initialize_app(cred)
 
 store = firestore.client()

@@ -9,4 +9,6 @@ wheels/
 # Virtual environments
 .venv
 
-# service.json
+service.json
+
+.env
