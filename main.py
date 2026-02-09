@@ -1,13 +1,15 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 from mcp.server.fastmcp import FastMCP
+import  os
 cred = credentials.Certificate("C:\\mcp\\halo_ai\\service.json")
 app = firebase_admin.initialize_app(cred)
 
 store = firestore.client()
 doc_ref= store.collection(u'users')
+PORT = os.environ.get("PORT", 8000)
 
-mcp = FastMCP("docs")
+mcp = FastMCP("docs", host='0.0.0.0', port=PORT)
 
 # docs = doc_ref.get()
 # for doc in docs:
