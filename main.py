@@ -4,7 +4,7 @@ from firebase_admin import credentials, firestore
 from mcp.server.fastmcp import FastMCP
 import  os
 BASE_DIR = Path(__file__).resolve().parent
-service_account_path = BASE_DIR / "service.json"
+service_account_path = "service.json"
 cred = credentials.Certificate(service_account_path)
 app = firebase_admin.initialize_app(cred)
 
