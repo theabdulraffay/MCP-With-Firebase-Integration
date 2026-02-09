@@ -2,7 +2,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from mcp.server.fastmcp import FastMCP
 import  os
-cred = credentials.Certificate("halo_ai\\service.json")
+cred = credentials.Certificate("MCP-With-Firebase-Integration\\service.json")
 app = firebase_admin.initialize_app(cred)
 
 store = firestore.client()
