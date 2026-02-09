@@ -1,8 +1,11 @@
 import firebase_admin
+from pathlib import Path
 from firebase_admin import credentials, firestore
 from mcp.server.fastmcp import FastMCP
 import  os
-cred = credentials.Certificate("MCP-With-Firebase-Integration\\service.json")
+BASE_DIR = Path(__file__).resolve().parent
+service_account_path = BASE_DIR / "service.json"
+cred = credentials.Certificate(service_account_path)
 app = firebase_admin.initialize_app(cred)
 
 store = firestore.client()
@@ -49,4 +52,4 @@ def get_appointments(id):
 
 # print(appointments)
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")
